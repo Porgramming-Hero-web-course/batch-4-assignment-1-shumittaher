@@ -2,25 +2,30 @@
 
     const myProfile = { name: "Alice", age: 25, email: "alice@example.com" }
     
-    interface ProfileInterface {
-        name : string
-        age : number
-        email : string
+    type ProfileInterface = {
+        [key: string]: string | number | undefined;
+        name: string
+        age: number
+        email: string
     } 
+
+    type keytype = Pick<ProfileInterface, "name">
 
     const updateProfile = (profile : ProfileInterface , newData : Partial<ProfileInterface>) : ProfileInterface => {
 
-        let updateProfile = profile
+        let updateProfile : ProfileInterface = profile
 
         for (const key in newData) {
+            if (key in updateProfile){
+                profile[key] = newData[key as keyof Partial<ProfileInterface>]
+            }
             
-            (updateProfile as any)[key] = (newData as any)[key]
         }
 
         return updateProfile
 
     }
     
-    console.log(updateProfile(myProfile, { age: 27 }))
+    console.log(updateProfile(myProfile, { name: "Alisone" , age: 102}))
 
 }

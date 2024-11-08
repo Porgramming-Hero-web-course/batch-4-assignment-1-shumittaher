@@ -4,9 +4,11 @@
     const updateProfile = (profile, newData) => {
         let updateProfile = profile;
         for (const key in newData) {
-            updateProfile[key] = newData[key];
+            if (key in updateProfile) {
+                profile[key] = newData[key];
+            }
         }
         return updateProfile;
     };
-    console.log(updateProfile(myProfile, { age: 27 }));
+    console.log(updateProfile(myProfile, { name: "Alisone", age: 102 }));
 }

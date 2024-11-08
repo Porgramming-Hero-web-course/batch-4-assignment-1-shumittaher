@@ -18,18 +18,28 @@
         width: 6 
     }
 
-    const calculateShapeArea = (areaDetails : CircleType | SquareType) : number => {
-        
-        let result : number
+    const isCircle = (shape: CircleType | SquareType): shape is CircleType => {
+        return (shape as CircleType).radius !== undefined;
+    };
 
-        if ('radius' in areaDetails) {
+    
+    const isSqaure = (shape: CircleType | SquareType): shape is SquareType => {
+        return (shape as SquareType).length !== undefined && (shape as SquareType).width !== undefined;
+    };
+
+    const calculateShapeArea = (areaDetails : CircleType | SquareType) : number | undefined => {
+        
+        let result : number | undefined
+
+        if (isCircle(areaDetails)) {
             
             result = Math.PI * (areaDetails.radius^2)
 
-        } else {
+        } else if (isSqaure(areaDetails)) {
             
             result = areaDetails.width * areaDetails.length
-        }
+
+        } else {}
         
         return result
     }
