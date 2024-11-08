@@ -1,15 +1,14 @@
 {
     const person = { name: "Alice", age: 30 };
 
-    function getProperty (person : object, key: string) {
+    function getProperty <X>(person : X, key: keyof X) {
         
-        if (key in person) {
-            return (person as any)[key]
-        } else {
-            return "Not Found"
-        }
+
+        return person[key]
+
          
     };
-    console.log(getProperty(person, "name"))
+
+    console.log(getProperty(person, "age"))
 
 }
