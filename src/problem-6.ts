@@ -2,7 +2,7 @@
 
     const myProfile = { name: "Alice", age: 25, email: "alice@example.com" }
     
-    type ProfileInterface = {
+    interface ProfileInterface {
         [key: string]: string | number | undefined;
         name: string
         age: number
