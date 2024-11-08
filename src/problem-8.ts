@@ -4,7 +4,7 @@
 
     type PersonType = Record<string, string | number>
 
-    const validateKeys = <X extends PersonType>(obj: X, keys: Array<keyof X>) : boolean => {
+    const validateKeys = <T extends PersonType>(obj: T, keys: (keyof T)[]) : boolean => {
         
         for (const key in obj) {
             if (!keys.includes(key)){
