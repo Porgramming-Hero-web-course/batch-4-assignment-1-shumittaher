@@ -9,8 +9,6 @@
         email: string
     } 
 
-    type keytype = Pick<ProfileInterface, "name">
-
     const updateProfile = (profile : ProfileInterface , newData : Partial<ProfileInterface>) : ProfileInterface => {
 
         let updateProfile : ProfileInterface = profile
